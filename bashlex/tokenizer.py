@@ -201,7 +201,7 @@ class tokenizer(object):
     def __init__(self, s, parserstate, strictmode=True, eoftoken=None,
                  lastreadtoken=None, tokenbeforethat=None, twotokensago=None):
         self._shell_eof_token = eoftoken
-        self._shell_input_line = s
+        self._shell_input_line = s.decode('utf-8') if isinstance(s, bytes) else s
         self._added_newline = False
         if self._shell_input_line and self._shell_input_line[-1] != '\n':
             self._shell_input_line += '\n' # bash/parse.y L2431
